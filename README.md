@@ -2,6 +2,7 @@
 #### Make SVG with paths only to a parametric function with Fourier Transformation.
 
 Development will be very slow 🤔🤔
+<hr/>
  
 ### Plan to implement SVGtoPlot
   1. For given path, give range of parameter `t` from `k/n` to `(k+1)/n`.
