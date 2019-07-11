@@ -46,31 +46,39 @@ Development will be very slow 🤔🤔
    
 ### Building equations of commands
   - M
+    - Since M is called only at the first time, we can assume that starting point of graph is set to given position.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(0)=(f(0),g(0))=(x,y)" title="equation" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(0)=(f(0),g(0))=(x,y)" title="equation" />
   - L
+    - Using fact that line segment from (a,b) to (c,d) can be written as h(t)=(f(t),g(t))=(at+c(1-t),bt+d(1-t)) where 0<t<1, we can derive equation for L command.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+x(nt-k),v(k+1-nt)+y(nt-k))" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+x(nt-k),v(k+1-nt)+y(nt-k))" title="equation not loaded" />
   - H
     - Using the equation of L, equation for H and V is easily derivable.
     
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+x(nt-k),v)" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+x(nt-k),v)" title="equation not loaded" />
   - V
+    - Same with H.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u,v(k+1-nt)+y(nt-k))" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u,v(k+1-nt)+y(nt-k))" title="equation not loaded" />
   - Z
+    - It is exactly same with L, except destination point is set to the first point of path.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+u_{0}(nt-k),v(k+1-nt)+v_{0}(nt-k))" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+u_{0}(nt-k),v(k+1-nt)+v_{0}(nt-k))" title="equation not loaded" />
   - Q
+    - For quadratic bezier curve, points on the curve is written as <img src="https://latex.codecogs.com/gif.latex?\inline&space;P=(1-t)^{2}U+2t(1-t)X_{1}+t^{2}X" title="equation not loaded" /> where U is the last point, X_1 is a given control point, and X is the destination point.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{2}+2x_{1}(nt-k)(k+1-nt)+x(nt-k)^{2},v(k+1-nt)^{2}+2y_{1}(nt-k)(k+1-nt)+y(nt-k)^{2})" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{2}+2x_{1}(nt-k)(k+1-nt)+x(nt-k)^{2},v(k+1-nt)^{2}+2y_{1}(nt-k)(k+1-nt)+y(nt-k)^{2})" title="equation not loaded" />
   - T
+    - Since continued, X_1 in Q is already set as U_1, the last control point.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{2}+2u_{1}(nt-k)(k+1-nt)+x(nt-k)^{2},v(k+1-nt)^{2}+2v_{1}(nt-k)(k+1-nt)+y(nt-k)^{2})" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{2}+2u_{1}(nt-k)(k+1-nt)+x(nt-k)^{2},v(k+1-nt)^{2}+2v_{1}(nt-k)(k+1-nt)+y(nt-k)^{2})" title="equation not loaded" />
   - C
+    - For cubic bezier curve, points on the curve is written as <img src="https://latex.codecogs.com/gif.latex?\inline&space;P=(1-t)^{3}U+3t(1-t)^{2}X_{1}+3t^{2}(1-t)X_{2}+t^{3}X" title="equation not loaded" /> where U is the last point, X_1 and X_2 are given control points, and X is the destination point.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{3}+3x_{1}(nt-k)(k+1-nt)^{2}+3x_{2}(nt-k)^{2}(k+1-nt)+x(nt-k)^{3},v(k+1-nt)^{3}+3y_{1}(nt-k)(k+1-nt)^{2}+3y_{2}(nt-k)^{2}(k+1-nt)+v(nt-k)^{3})" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{3}+3x_{1}(nt-k)(k+1-nt)^{2}+3x_{2}(nt-k)^{2}(k+1-nt)+x(nt-k)^{3},v(k+1-nt)^{3}+3y_{1}(nt-k)(k+1-nt)^{2}+3y_{2}(nt-k)^{2}(k+1-nt)+v(nt-k)^{3})" title="equation not loaded" />
   - S
+    - Since continued, X_1 in C is already set as U_1, the last control point.
   
     <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{3}+3u_{1}(nt-k)(k+1-nt)^{2}+3x_{2}(nt-k)^{2}(k+1-nt)+x(nt-k)^{3},v(k+1-nt)^{3}+3v_{1}(nt-k)(k+1-nt)^{2}+3y_{2}(nt-k)^{2}(k+1-nt)+v(nt-k)^{3})" title="equation not loaded" />
   - A
