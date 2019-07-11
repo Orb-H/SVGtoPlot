@@ -29,7 +29,7 @@ Development will be very slow 🤔🤔
    - Usage: `Z` or `z`
    - Action: **Closes** the path. It means this draws a line from the last point to the starting point.
  - C
-   - Usage: `C x1 y1, x2 y2, x y` or `x dx1 dy1, dx2 dy2, dx dy`
+   - Usage: `C x1 y1, x2 y2, x y` or `c dx1 dy1, dx2 dy2, dx dy`
    - Action: Draws a **cubic bezier curve** from the last point to the given point(`x y`), with given two control points(`x1 y1, x2 y2`).
  - S
    - Usage: `S x2 y2, x y` or `s dx2 dy2, dx dy`
@@ -43,3 +43,36 @@ Development will be very slow 🤔🤔
  - A
    - Usage: `A rx ry x-rotate-angle large-arc-flag sweep-flag x y` or `a rx ry x-rotate-angle large-arc-flag sweep-flag dx dy`
    - Action: Draws a **arc** on an oval with given radius, angle, and flag from the last point to the given point(`x y`).
+   
+### Building equations of commands
+  - M
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(0)=(f(0),g(0))=(x,y)" title="equation" />
+  - L
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+x(nt-k),v(k+1-nt)+y(nt-k))" title="equation not loaded" />
+  - H
+    - Using the equation of L, equation for H and V is easily derivable.
+    
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+x(nt-k),v)" title="equation not loaded" />
+  - V
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u,v(k+1-nt)+y(nt-k))" title="equation not loaded" />
+  - Z
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)+u_{0}(nt-k),v(k+1-nt)+v_{0}(nt-k))" title="equation not loaded" />
+  - Q
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{2}+2x_{1}(nt-k)(k+1-nt)+x(nt-k)^{2},v(k+1-nt)^{2}+2y_{1}(nt-k)(k+1-nt)+y(nt-k)^{2})" title="equation not loaded" />
+  - T
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{2}+2u_{1}(nt-k)(k+1-nt)+x(nt-k)^{2},v(k+1-nt)^{2}+2v_{1}(nt-k)(k+1-nt)+y(nt-k)^{2})" title="equation not loaded" />
+  - C
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{3}+3x_{1}(nt-k)(k+1-nt)^{2}+3x_{2}(nt-k)^{2}(k+1-nt)+x(nt-k)^{3},v(k+1-nt)^{3}+3y_{1}(nt-k)(k+1-nt)^{2}+3y_{2}(nt-k)^{2}(k+1-nt)+v(nt-k)^{3})" title="equation not loaded" />
+  - S
+  
+    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{3}+3u_{1}(nt-k)(k+1-nt)^{2}+3x_{2}(nt-k)^{2}(k+1-nt)+x(nt-k)^{3},v(k+1-nt)^{3}+3v_{1}(nt-k)(k+1-nt)^{2}+3y_{2}(nt-k)^{2}(k+1-nt)+v(nt-k)^{3})" title="equation not loaded" />
+  - A
+  
+    TODO.
