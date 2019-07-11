@@ -80,7 +80,7 @@ Development will be very slow 🤔🤔
   - S
     - Since continued, X_1 in C is already set as U_1, the last control point.
   
-    <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{3}+3u_{1}(nt-k)(k+1-nt)^{2}+3x_{2}(nt-k)^{2}(k+1-nt)+x(nt-k)^{3},v(k+1-nt)^{3}+3v_{1}(nt-k)(k+1-nt)^{2}+3y_{2}(nt-k)^{2}(k+1-nt)+v(nt-k)^{3})" title="equation not loaded" />
+      <img src="https://latex.codecogs.com/gif.latex?\inline&space;h(t)=(f(t),g(t))=(u(k+1-nt)^{3}+3u_{1}(nt-k)(k+1-nt)^{2}+3x_{2}(nt-k)^{2}(k+1-nt)+x(nt-k)^{3},v(k+1-nt)^{3}+3v_{1}(nt-k)(k+1-nt)^{2}+3y_{2}(nt-k)^{2}(k+1-nt)+v(nt-k)^{3})" title="equation not loaded" />
   - A
   
     TODO.
