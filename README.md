@@ -110,112 +110,122 @@ Development will be very slow 🤔🤔
 -   A
 
     -   Equation deriving
+    
+        -   Equation for ellipse
 
-        For given radii a and b, equation for ellipse can be written as
+            For given radii a and b, equation for ellipse can be written as
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\frac{(x-m)^2}{a^2}+\frac{(y-n)^2}{b^2}=1" title="equation not loaded" />
+
+            or in parametric form
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}x=m+a\cos\theta\\y=n+b\sin\theta\end{matrix}\right." title="equation not loaded" />
+
+            However, ellipse can be rotated by angle given in command. So rotation of axis is needed to manipulate equation.
+
+            SVG path uses clockwise rotation unlike usual mathematics, so negative value should be used. For given rotation angle χ, let φ ≡ (-χ) mod 180. Then φ will be used since ellipse with rotation angle χ has same phase with one with angle -φ. In addition, φ will have range \[0, π).
+
+            By rotation, new axis x' and y' is set to
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}x'=\frac{x-m+c(y-n)}{\sqrt{1+c^2}}\\y'=\frac{y-n-c(x-m)}{\sqrt{1+c^2}}\end{matrix}\right." title="equation not loaded" />
+
+            where
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;c=\tan\phi" title="equation not loaded" />
+
+            and new equation will be
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\frac{(x-m+c(y-n))^2}{a^2}+\frac{(y-n-c(x-m))^2}{b^2}=1+c^2" title="equation not loaded" />
+
+            and
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}x'=m+a\cos\theta\cos\phi+b\sin\theta\sin\phi\\y'=n-a\cos\theta\sin\phi+b\sin\theta\cos\phi\end{matrix}\right." title="equation not loaded" />
+
+            in parametric form.
+            
+        -   Finding center of ellipse
+
+            Using the last point U as (u, v), given destination point X as (s, t), and equation above, new system is built as
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}u=m+a\cos\alpha\cos\phi+b\sin\alpha\sin\phi\\v=n-a\cos\alpha\sin\phi+b\sin\alpha\cos\phi\\s=m+a\cos\beta\cos\phi+b\sin\beta\sin\phi\\t=n-a\cos\beta\sin\phi+b\sin\beta\cos\phi\end{matrix}\right." title="equation not loaded" />
+
+            The variables to solve are m, n, α, and β. There will be two solutions for this system.
+
+            By subtracting equation 1 and 3, following equation is derived.
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;u-s=a(\cos\alpha-\cos\beta)\cos\phi+b(\sin\alpha-\sin\beta)\sin\phi" title="equation not loaded" />
+
+            Using same method with equation 2 and 4,
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;v-t=-a(\cos\alpha-\cos\beta)\sin\phi+b(\sin{\alpha}-\sin{\beta})\cos\phi" title="equation not loaded" />
+
+            By multiplying cosφ, sinφ to each equation and adding/subtracting well, two equations can be derived as following.
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}(u-s)\cos\phi-(v-t)\sin\phi=a(\cos\alpha-\cos\beta)\\(u-s)\sin\phi+(v-t)\cos\phi=b(\sin\alpha-\sin\beta)\end{matrix}\right." title="equation not loaded" />
+
+            Using trigonometric conversion equation, two equations above can be derived into
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}-A=\sin\gamma\sin\delta\\B=\cos\gamma\sin\delta\end{matrix}\right." title="equation not loaded" />
+
+            where
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}A=\frac{(u-s)\cos\phi-(v-t)\sin\phi}{2a}\\B=\frac{(u-s)\sin\phi+(v-t)\cos\phi}{2b}\\\gamma=\frac{\alpha+\beta}{2}\\\delta=\frac{\alpha-\beta}{2}\end{matrix}\right." title="equation not loaded" />
+
+            By dividing one of those equation by another one, a simple equation
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\frac{A}{B}=-\tan\gamma" title="equation not loaded" />
+
+            is derived. Therefore
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\gamma=-\tan^{-1}\frac{A}{B}" title="equation not loaded" />
+
+            and
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\delta=\sin^{-1}\frac{B}{\cos(\tan^{-1}\frac{A}{B})}=\sin^{-1}(B\sec({\tan^{-1}\frac{A}{B}}))=\sin^{-1}(B\sqrt{1+\frac{A^2}{B^2}})=\sin^{-1}\sqrt{A^{2}+B^{2}}" title="equation not loaded" />
+
+            Since
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\alpha=\gamma+\delta=\sin^{-1}\sqrt{A^2+B^2}-\tan^{-1}\frac{A}{B}" title="equation not loaded" />
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\cos\alpha=\cos(\gamma+\delta)=\cos\gamma\cos\delta-\sin\gamma\sin\delta=\frac{B}{\sqrt{A^2+B^2}}\sqrt{1-(A^2+B^2)}+\frac{A}{\sqrt{A^2+B^2}}\sqrt{A^2+B^2}=A+B\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}" title="equation not loaded" />
+
+            and
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\sin\alpha=\sin(\gamma+\delta)=\sin\gamma\cos\delta+\cos\gamma\sin\delta=-\frac{A}{\sqrt{A^2+B^2}}\sqrt{1-(A^2+B^2)}+\frac{B}{\sqrt{A^2+B^2}}\sqrt{A^2+B^2}=B-A\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}" title="equation not loaded" />
+
+            Using cosα and sinα, m and n can be written with a, b, y, v, s, and t like following.
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;m=u-a\cos\alpha\cos\phi-b\sin\alpha\sin\phi=u-aA\cos\phi-aB\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\cos\phi-bB\sin\phi+bA\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\sin\phi=\frac{u+s}{2}-aBX\cos\phi+bAX\sin\phi" title="equation not loaded" />
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;n=v+a\cos\alpha\sin\phi-b\sin\alpha\cos\phi=v+aA\sin\phi+aB\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\sin\phi-bB\cos\phi+bA\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\cos\phi=\frac{v+t}{2}+aBX\sin\phi+bAX\cos\phi" title="equation not loaded" />
+
+            where
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;X=\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}" title="equation not loaded" />
+
+            So the equation will be
+
+            <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=(m+a\cos\phi\cos((1-t)\alpha+t\beta)+b\sin\phi\sin((1-t)\alpha+t\beta),n-a\sin\phi\cos((1-t)\alpha+t\beta)+b\cos\phi\sin((1-t)\alpha+t\beta))" title="equation not loaded" />
+
+            However, there are sweep-flag and large-arc-flag, and these flags are needed to determine the only solution for arc. First, large-arc-flag will be used for constraint of (β-α) value. Next, the value (sweep-flag ^ large-arc-flag) will be used for determining the only center of ellipse.
         
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\frac{(x-m)^2}{a^2}+\frac{(y-n)^2}{b^2}=1" title="equation not loaded" />
+        -   Setting range of α and β
         
-        or in parametric form
+            To determine α and β, we have to define the range of both variables first.
+            <img align=center src="readme_res/RangeSetting.gif" />
+            **Step 1**.
+              First, let's set the range limit of α to [-π, π]. Then range of β will be set to [α-π, α+π] to cover all possibilities, and parallelogram will be drawn when range of α and β is shown on α-β plane.
+
+            **Step 2**. However, values over 2π or under -2π are difficult to deal with. ranges out of black square should be cut and move into the square.
+
+            **Step 3**. Two red triangles are selected to be relocated.
+
+            **Step 4**. New areas for red triangles are selected to green triangles. For example in upper red triangle, the point (π, 2π) is exactly same situation with the one of point (-π, 0). Points like (π, π) or (0, 2π) are also equivalent to (-π, -π) and (-2π, 0). Therefore, the fact that two points on y=x+C (C is arbitrary constant) are equivalent when difference of x-value (or y-value) is multiple of 2π.
+
+            **Step 5**. Using fact above, two red triangles will be moved to green areas.
+
+            **Step 6**. Then shape of the range becomes a diamond shape and fit into the black square.
         
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}x=m+a\cos\theta\\y=n+b\sin\theta\end{matrix}\right." title="equation not loaded" />
+        -   Considering flags
         
-        However, ellipse can be rotated by angle given in command. So rotation of axis is needed to manipulate equation.
-        
-        SVG path uses clockwise rotation unlike usual mathematics, so negative value should be used. For given rotation angle χ, let φ ≡ (-χ) mod 180. Then φ will be used since ellipse with rotation angle χ has same phase with one with angle -φ. In addition, φ will have range \[0, π).
-        
-        By rotation, new axis x' and y' is set to
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}x'=\frac{x-m+c(y-n)}{\sqrt{1+c^2}}\\y'=\frac{y-n-c(x-m)}{\sqrt{1+c^2}}\end{matrix}\right." title="equation not loaded" />
-        
-        where
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;c=\tan\phi" title="equation not loaded" />
-        
-        and new equation will be
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\frac{(x-m+c(y-n))^2}{a^2}+\frac{(y-n-c(x-m))^2}{b^2}=1+c^2" title="equation not loaded" />
-        
-        and
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}x'=m+a\cos\theta\cos\phi+b\sin\theta\sin\phi\\y'=n-a\cos\theta\sin\phi+b\sin\theta\cos\phi\end{matrix}\right." title="equation not loaded" />
-        
-        in parametric form.
-        
-        Using the last point U as (u, v), given destination point X as (s, t), and equation above, new system is built as
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}u=m+a\cos\alpha\cos\phi+b\sin\alpha\sin\phi\\v=n-a\cos\alpha\sin\phi+b\sin\alpha\cos\phi\\s=m+a\cos\beta\cos\phi+b\sin\beta\sin\phi\\t=n-a\cos\beta\sin\phi+b\sin\beta\cos\phi\end{matrix}\right." title="equation not loaded" />
-        
-        The variables to solve are m, n, α, and β. There will be two solutions for this system.
-        
-        By subtracting equation 1 and 3, following equation is derived.
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;u-s=a(\cos\alpha-\cos\beta)\cos\phi+b(\sin\alpha-\sin\beta)\sin\phi" title="equation not loaded" />
-        
-        Using same method with equation 2 and 4,
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;v-t=-a(\cos\alpha-\cos\beta)\sin\phi+b(\sin{\alpha}-\sin{\beta})\cos\phi" title="equation not loaded" />
-        
-        By multiplying cosφ, sinφ to each equation and adding/subtracting well, two equations can be derived as following.
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}(u-s)\cos\phi-(v-t)\sin\phi=a(\cos\alpha-\cos\beta)\\(u-s)\sin\phi+(v-t)\cos\phi=b(\sin\alpha-\sin\beta)\end{matrix}\right." title="equation not loaded" />
-        
-        Using trigonometric conversion equation, two equations above can be derived into
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}-A=\sin\gamma\sin\delta\\B=\cos\gamma\sin\delta\end{matrix}\right." title="equation not loaded" />
-        
-        where
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\left\{\begin{matrix}A=\frac{(u-s)\cos\phi-(v-t)\sin\phi}{2a}\\B=\frac{(u-s)\sin\phi+(v-t)\cos\phi}{2b}\\\gamma=\frac{\alpha+\beta}{2}\\\delta=\frac{\alpha-\beta}{2}\end{matrix}\right." title="equation not loaded" />
-        
-        By dividing one of those equation by another one, a simple equation
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\frac{A}{B}=-\tan\gamma" title="equation not loaded" />
-        
-        is derived. Therefore
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\gamma=-\tan^{-1}\frac{A}{B}" title="equation not loaded" />
-        
-        and
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\delta=\sin^{-1}\frac{B}{\cos(\tan^{-1}\frac{A}{B})}=\sin^{-1}(B\sec({\tan^{-1}\frac{A}{B}}))=\sin^{-1}(B\sqrt{1+\frac{A^2}{B^2}})=\sin^{-1}\sqrt{A^{2}+B^{2}}" title="equation not loaded" />
-        
-        Since
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\alpha=\gamma+\delta=\sin^{-1}\sqrt{A^2+B^2}-\tan^{-1}\frac{A}{B}" title="equation not loaded" />
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\cos\alpha=\cos(\gamma+\delta)=\cos\gamma\cos\delta-\sin\gamma\sin\delta=\frac{B}{\sqrt{A^2+B^2}}\sqrt{1-(A^2+B^2)}+\frac{A}{\sqrt{A^2+B^2}}\sqrt{A^2+B^2}=A+B\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}" title="equation not loaded" />
-        
-        and
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;\sin\alpha=\sin(\gamma+\delta)=\sin\gamma\cos\delta+\cos\gamma\sin\delta=-\frac{A}{\sqrt{A^2+B^2}}\sqrt{1-(A^2+B^2)}+\frac{B}{\sqrt{A^2+B^2}}\sqrt{A^2+B^2}=B-A\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}" title="equation not loaded" />
-        
-        Using cosα and sinα, m and n can be written with a, b, y, v, s, and t like following.
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;m=u-a\cos\alpha\cos\phi-b\sin\alpha\sin\phi=u-aA\cos\phi-aB\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\cos\phi-bB\sin\phi+bA\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\sin\phi=\frac{u+s}{2}-aBX\cos\phi+bAX\sin\phi" title="equation not loaded" />
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;n=v+a\cos\alpha\sin\phi-b\sin\alpha\cos\phi=v+aA\sin\phi+aB\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\sin\phi-bB\cos\phi+bA\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}\cos\phi=\frac{v+t}{2}+aBX\sin\phi+bAX\cos\phi" title="equation not loaded" />
-        
-        where
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;X=\frac{\sqrt{1-(A^2+B^2)}}{\sqrt{A^2+B^2}}" title="equation not loaded" />
-        
-        So the equation will be
-        
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=(m+a\cos\phi\cos((1-t)\alpha+t\beta)+b\sin\phi\sin((1-t)\alpha+t\beta),n-a\sin\phi\cos((1-t)\alpha+t\beta)+b\cos\phi\sin((1-t)\alpha+t\beta))" title="equation not loaded" />
-        
-        However, there are sweep-flag and large-arc-flag, and these flags are needed to determine the only solution for arc. First, large-arc-flag will be used for constraint of (β-α) value. Next, the value (sweep-flag ^ large-arc-flag) will be used for determining the only center of ellipse.
-        
-        To determine α and β, we have to define the range of both variables first.
-        <img align=center src="readme_res/RangeSetting.gif" />
-        **Step 1**.
-          First, let's set the range limit of α to [-π, π]. Then range of β will be set to [α-π, α+π] to cover all possibilities, and parallelogram will be drawn when range of α and β is shown on α-β plane.
-          
-        **Step 2**. However, values over 2π or under -2π are difficult to deal with. ranges out of black square should be cut and move into the square.
-        
-        **Step 3**. Two red triangles are selected to be relocated.
-        
-        **Step 4**. New areas for red triangles are selected to green triangles. For example in upper red triangle, the point (π, 2π) is exactly same situation with the one of point (-π, 0). Points like (π, π) or (0, 2π) are also equivalent to (-π, -π) and (-2π, 0). Therefore, the fact that two points on y=x+C (C is arbitrary constant) are equivalent when difference of x-value (or y-value) is multiple of 2π.
-        
-        **Step 5**. Using fact above, two red triangles will be moved to green areas.
-        
-        **Step 6**. Then shape of the range becomes a diamond shape and fit into the black square.
+            As mentioned above, there are two flags named sweep-flag and large-arc-flag. Both flags determine the only arc to determine among at most 4 available arcs. First, large-arc-flag determines if |β-α| ≥ π.
