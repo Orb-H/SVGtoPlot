@@ -53,43 +53,43 @@ Development will be very slow 🤔🤔
 
     -   Since M is called only at the first time, we can assume that starting point of graph is set to given position.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(0)=(f(0),g(0))=(x,y)" title="equation not loaded" />
+        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(0)=(f(0),g(0))=(x,y)" title="equation not loaded" />
 
 -   L
 
-    -   Using fact that line segment from (a,b) to (c,d) can be written as <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=(at+c(1-t),bt+d(1-t))" title="equation not loaded" /> where 0&lt;t&lt;1, we can derive equation for L command.
+    -   Using fact that line segment from (u,v) to (x,y) can be written as
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,(1-t)v+ty" title="equation not loaded" />
+        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,(1-t)v+ty" title="equation not loaded" />
 
 -   H
 
     -   Using the equation of L, equation for H and V is easily derivable.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,v)" title="equation not loaded" />
+        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,v)" title="equation not loaded" />
 
 -   V
 
     -   Same with H.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=(u,(1-t)v+ty)" title="equation not loaded" />
+        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=(u,(1-t)v+ty)" title="equation not loaded" />
 
 -   Z
 
     -   It is exactly same with L, except destination point is set to the first point of path.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tu_0,(1-t)v+tv_0)" title="equation not loaded" />
+        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tu_0,(1-t)v+tv_0)" title="equation not loaded" />
 
 -   Q
 
-    -   For quadratic bezier curve, points on the curve is written as <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;P=(1-t)^2U+2t(1-t)X_1+t^2X" title="equation not loaded" /> where U is the last point, X<sub>1</sub> is a given control point, and X is the destination point.
+    -   For quadratic bezier curve, points on the curve is written as <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;P=(1-t)^2U+2t(1-t)X_1+t^2X" title="equation not loaded" /> where U is the last point, X<sub>1</sub> is a given control point, and X is the destination point.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tx_1+t^2x,(1-t)^2v+2(1-t)ty_{1}+t^2y)" title="equation not loaded" />
+        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tx_1+t^2x,(1-t)^2v+2(1-t)ty_{1}+t^2y)" title="equation not loaded" />
 
 -   T
 
     -   Since continued, X<sub>1</sub> in Q is already set as U<sub>1</sub>, the last control point.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tu_1+t^2x,v(k+1-nt)^2+2v_1(nt-k)(k+1-nt)+y(nt-k)^2)" title="equation not loaded" />
+        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tu_1+t^2x,v(k+1-nt)^2+2v_1(nt-k)(k+1-nt)+y(nt-k)^2)" title="equation not loaded" />
 
 -   C
 
@@ -120,4 +120,5 @@ Development will be very slow 🤔🤔
         So the equation will be <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=(m+a\cos\phi\cos((1-t)\alpha+t\beta)+b\sin\phi\sin((1-t)\alpha+t\beta),n-a\sin\phi\cos((1-t)\alpha+t\beta)+b\cos\phi\sin((1-t)\alpha+t\beta))" title="equation not loaded" /><br />
         However, there are sweep-flag and large-arc-flag, and these flags are needed to determine the only solution for arc. First, large-arc-flag will be used for constraint of (β-α) value. Next, the value (sweep-flag ^ large-arc-flag) will be used for determining the only center of ellipse.<br />
         To determine α and β, we have to define the range of both variables first.
-        <iframe scrolling="no" title="Setting Range of α and β" src="https://www.geogebra.org/material/iframe/id/bpkbukmj/width/1890/height/874/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="800px" height="600px" style="border:0px;"> </iframe>
+        <img align=center src="readme_res/RangeSetting.gif" />
+        1. First, let's set the range limit of α [-π, π]. Then 
