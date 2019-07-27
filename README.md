@@ -53,59 +53,63 @@ Development will be very slow 🤔🤔
 
     -   Since M is called only at the first time, we can assume that starting point of graph is set to given position.
 
-        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(0)=(f(0),g(0))=(x,y)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(0)=(f(0),g(0))=(x,y))
 
 -   L
 
     -   Using fact that line segment from (u,v) to (x,y) can be written as
 
-        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,(1-t)v+ty" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,(1-t)v+ty))
 
 -   H
 
     -   Using the equation of L, equation for H and V is easily derivable.
 
-        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,v)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tx,v))
 
 -   V
 
     -   Same with H.
 
-        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=(u,(1-t)v+ty)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=(u,(1-t)v+ty))
 
 -   Z
 
     -   It is exactly same with L, except destination point is set to the first point of path.
 
-        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tu_0,(1-t)v+tv_0)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=((1-t)u+tu_0,(1-t)v+tv_0))
 
 -   Q
 
-    -   For quadratic bezier curve, points on the curve is written as <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;P=(1-t)^2U+2t(1-t)X_1+t^2X" title="equation not loaded" />
+    -   For quadratic bezier curve, points on the curve is written as
+    
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;P=(1-t)^2U+2t(1-t)X_1+t^2X)
     
         where U is the last point, X<sub>1</sub> is a given control point, and X is the destination point.
 
-        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tx_1+t^2x,(1-t)^2v+2(1-t)ty_{1}+t^2y)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tx_1+t^2x,(1-t)^2v+2(1-t)ty_{1}+t^2y))
 
 -   T
 
     -   Since continued, X<sub>1</sub> in Q is already set as U<sub>1</sub>, the last control point.
 
-        <img align=center src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tu_1+t^2x,v(k+1-nt)^2+2v_1(nt-k)(k+1-nt)+y(nt-k)^2)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=((1-t)^2u+2(1-t)tu_1+t^2x,v(k+1-nt)^2+2v_1(nt-k)(k+1-nt)+y(nt-k)^2))
 
 -   C
 
-    -   For cubic bezier curve, points on the curve is written as <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;P=(1-t)^3U+3t(1-t)^2X_{1}+3t^2(1-t)X_2+t^3X" title="equation not loaded" />
+    -   For cubic bezier curve, points on the curve is written as
+    
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;P=(1-t)^3U+3t(1-t)^2X_{1}+3t^2(1-t)X_2+t^3X)
     
         where U is the last point, X<sub>1</sub> and X<sub>2</sub> are given control points, and X is the destination point.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^3u+3(1-t)^2tx_1+3(1-t)t^2x_2+t^3x,(1-t)^3v+3(1-t)^2ty_1+3(1-t)t^2y_+t^3v)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=((1-t)^3u+3(1-t)^2tx_1+3(1-t)t^2x_2+t^3x,(1-t)^3v+3(1-t)^2ty_1+3(1-t)t^2y_+t^3v))
 
 -   S
 
     -   Since continued, X<sub>1</sub> in C is already set as U<sub>1</sub>, the last control point.
 
-        <img src="https://latex.codecogs.com/gif.latex?\inline&space;\bg_white&space;h(t)=(f(t),g(t))=((1-t)^3u+3(1-t)^2tu_1+3(1-t)t^2x_2+t^3x,(1-t)^3v+3(1-t)^2tv_1+3(1-t)t^2y_2+t^3v)" title="equation not loaded" />
+        ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=((1-t)^3u+3(1-t)^2tu_1+3(1-t)t^2x_2+t^3x,(1-t)^3v+3(1-t)^2tv_1+3(1-t)t^2y_2+t^3v))
 
 -   A
 
