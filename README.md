@@ -143,7 +143,7 @@ Development will be very slow 🤔🤔
 
             and
 
-            ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;\\left\\{\\begin{matrix}x'=m+a\\cos\\theta\\cos\\phi+b\\sin\\theta\\sin\\phi\\\\y'=n-a\\cos\\theta\\sin\\phi+b\\sin\\theta\\cos\\phi\e\nd{matrix}\\right.)
+            ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;\\left\\{\\begin{matrix}x'=m+a\\cos\\theta\\cos\\phi+b\\sin\\theta\\sin\\phi\\\\y'=n-a\\cos\\theta\\sin\\phi+b\\sin\\theta\\cos\\phi\\end{matrix}\\right.)
 
             in parametric form.
             
