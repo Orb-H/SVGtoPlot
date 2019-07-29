@@ -210,8 +210,6 @@ Development will be very slow 🤔🤔
             So the equation will be
 
             ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;h(t)=(f(t),g(t))=(m+a\\cos\\phi\\cos((1-t)\\alpha+t\\beta)+b\\sin\\phi\\sin((1-t)\\alpha+t\\beta),n-a\\sin\\phi\\cos((1-t)\\alpha+t\\beta)+b\\cos\\phi\\sin((1-t)\\alpha+t\\beta)))
-
-            However, there are sweep-flag and large-arc-flag, and these flags are needed to determine the only solution for arc. First, large-arc-flag will be used for constraint of (β-α) value. Next, the value (sweep-flag ^ large-arc-flag) will be used for determining the only center of ellipse.
         
         -   Setting range of α and β
         
@@ -232,4 +230,12 @@ Development will be very slow 🤔🤔
         
         -   Considering flags
         
-            As mentioned above, there are two flags named sweep-flag and large-arc-flag. Both flags determine the only arc to determine among at most 4 available arcs. First, large-arc-flag determines if |β-α| ≥ π.
+            There are two flags named sweep-flag and large-arc-flag. Both flags determine the only arc to determine among at most 4 available arcs. Possibilities are as below.
+            
+            ![Arcs according to flags](readme_res/arc_flags.png)
+            
+            According to equation derived above, range of γ( =(α+β)/2 ) is [-π/2, π/2] and range of δ( =(α-β)/2 ) is [0, π/2]. Therefore, points above the α-axis will be solutions of the equation, and other possible cases according to given condition without flags will look like image below.
+            
+            ![Points on graph](readme_res/PossiblePoints.gif)
+            
+            
