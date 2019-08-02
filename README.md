@@ -197,7 +197,7 @@ Development will be very slow 🤔🤔
 
             ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;\\sin\\alpha=\\sin(\\gamma+\\delta)=\\sin\\gamma\\cos\\delta+\\cos\\gamma\\sin\\delta=-\\frac{A}{\\sqrt{A^2+B^2}}\\sqrt{1-(A^2+B^2)}+\\frac{B}{\\sqrt{A^2+B^2}}\\sqrt{A^2+B^2}=B-A\\frac{\\sqrt{1-(A^2+B^2)}}{\\sqrt{A^2+B^2}})
 
-            Using cosα and sinα, m and n can be written with a, b, y, v, s, and t like following.
+            Using cosα and sinα, m and n can be written with a, b, u, v, s, and t like following.
 
             ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;m=u-a\\cos\\alpha\\cos\\phi-b\\sin\\alpha\\sin\\phi=u-aA\\cos\\phi-aB\\frac{\\sqrt{1-(A^2+B^2)}}{\\sqrt{A^2+B^2}}\\cos\\phi-bB\\sin\\phi+bA\\frac{\\sqrt{1-(A^2+B^2)}}{\\sqrt{A^2+B^2}}\\sin\\phi=\\frac{u+s}{2}-aBX\\cos\\phi+bAX\\sin\\phi)
 
@@ -230,12 +230,22 @@ Development will be very slow 🤔🤔
         
         -   Considering flags
         
-            There are two flags named sweep-flag and large-arc-flag. Both flags determine the only arc to determine among at most 4 available arcs. Possibilities are as below.
+            There are two flags named sweep-flag and large-arc-flag. Both flags determine the only arc to determine among at most 4 available arcs. Possible cases are like below.
             
             ![Arcs according to flags](readme_res/arc_flags.png)
             
-            According to equation derived above, range of γ( =(α+β)/2 ) is [-π/2, π/2] and range of δ( =(α-β)/2 ) is [0, π/2]. Therefore, points above the α-axis will be solutions of the equation, and other possible cases according to given condition without flags will look like image below.
+            According to equation derived above, range of γ(=(α+β)/2) is [-π/2, π/2] and range of δ(=(α-β)/2) is [0, π/2]. Therefore, points above the α-axis will be solutions of the equation, and other possible cases according to given condition without flags will look like image below.
             
             ![Points on graph](readme_res/PossiblePoints.gif)
+            
+            First, large-arc-flag will be considered. Large-arc-flag means whether to draw arc whose length is longer than (or equal) the half of base ellipse. Using this fact, this flag can be written in mathematical form as below.
+            
+            ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;\\left\\{\\begin{matrix}\\left|\\beta-\\alpha\\right|\\ge\\pi&\\text{large-arc-flag&space;is&space;1}\\\\\\left|\\beta-\\alpha\\right|<\\pi&\\text{large-arc-flag&space;is&space;0}\\end{matrix}\\right.)
+            
+            Next, sweep-flag will be considered. Sweep-flag means whether to draw arc in clockwise direction or counterclockwise direction. Using this fact, this flag can be written in mathematical form as below.
+            
+            ![Equation](https://latex.codecogs.com/gif.latex?\\bg_white&space;\\left\\{\\begin{matrix}\\beta\\le\\alpha&\\text{sweep-flag&space;is&space;1}\\\\\\beta>\\alpha&\\text{sweep-flag&space;is&space;0}\\end{matrix}\\right.)
+            
+            The final thing to do with flags is determining the center of ellipse. There can two ways to determine. By using angle of vector and directly substituting. Since directly substituting is easier, that method will be used. It is very easy. By substituting α and β, in the equation of m and n, more sufficient pair will be chosen.
             
             
