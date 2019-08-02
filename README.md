@@ -234,7 +234,7 @@ Development will be very slow 🤔🤔
             
             ![Arcs according to flags](readme_res/arc_flags.png)
             
-            According to equation derived above, range of γ(=(α+β)/2) is [-π/2, π/2] and range of δ(=(α-β)/2) is [0, π/2]. Therefore, points above the α-axis will be solutions of the equation, and other possible cases according to given condition without flags will look like image below.
+            According to equation derived above, range of γ(=(α+β)/2) is [-π/2, π/2] and range of δ(=(α-β)/2) is [0, π/2]. Therefore, points in a rectangular range will be solutions and other possible cases according to given condition without flags will look like image below.
             
             ![Points on graph](readme_res/PossiblePoints.gif)
             
